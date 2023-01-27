@@ -6,27 +6,42 @@ using System.Collections.Generic;
 
 namespace CatWorx.Badgemaker
 {
-    class Program
+        class Program
     {
-        static void Main(string[] args)
+    static List<Employee> GetEmployees()
+    {
+        List<Employee> employees = new List<Employee>();
+        while (true)
         {
-            List<string> employees = new List<string>();
-            //collect user values until the value is an empty string
-            while (true) {
-            Console.WriteLine("Please enter a name: ");
-            // get a name from the console and assign it to a variable
-            string input = Console.ReadLine() ?? "";
-            // break if the user hits enter w/o typing a name
-            if (input == "") 
-            {
-                break;
-            }
-            employees.Add(input);
-            }
-            for (int i = 0; i <employees.Count; i++)
-            {
-                Console.WriteLine(employees[i]);
-            }
+
+        Console.WriteLine("Please enter a name: (leave empty to exit): ");
+
+        string input = Console.ReadLine() ?? "";
+
+        if (input == "")
+        {
+            break;
         }
+        // create new employee instance
+        Employee currentEmployee = new Employee(input, "Smith");
+        // add currentEmployee, not a string
+        employees.Add(currentEmployee);
+        }
+        return employees;
+    }
+
+    static void PrintEmployees(List<string> employees)
+    {
+        for (int i = 0; i < employees.Count; i++)
+        {
+        Console.WriteLine(employees[i]);
+        }
+    }
+
+    static void PrintEmployees(List<Employee> employees)
+    {
+        List<string> employees = GetEmployees();
+        PrintEmployees(employees);
+    }
     }
 }
