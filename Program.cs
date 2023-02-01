@@ -11,6 +11,7 @@ namespace CatWorx.Badgemaker
     static void Main(string[] args)
     {
         List<Employee> employees = GetEmployees();
+        employees = GetEmployees();
         Util.PrintEmployees(employees);
         Util.MakeCSV(employees);
     }
